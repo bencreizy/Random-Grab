@@ -1,0 +1,66 @@
+import React from 'react';
+
+const CyberWindow = () => {
+  return (
+    <div className="min-h-screen bg-[#050505] flex items-center justify-center p-10 overflow-hidden">
+      {/* Doubled the vertical length (height).
+        Original aspect was 16:9. 
+        Doubling the vertical height makes it 16:18 (which simplifies to 8:9).
+        We use a fixed max-height and aspect ratio to ensure it stays "long" vertically.
+      */}
+      <div className="relative w-full max-w-xl aspect-[8/9] group">
+        
+        {/* Outer Glow Layer */}
+        <div className="absolute -inset-1 bg-cyan-500/20 blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+
+        {/* The Frame Geometry */}
+        <div 
+          className="relative w-full h-full bg-[#0a0a0a]/80 backdrop-blur-sm border-2 border-cyan-500/50 shadow-[inset_0_0_30px_rgba(6,182,212,0.2)]"
+          style={{
+            /* Adjusted polygon for a tall frame. 
+               Side cuts are at 10% vertical height to maintain the sharp cyberpunk profile.
+            */
+            clipPath: 'polygon(10% 0, 90% 0, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0 90%, 0 10%)'
+          }}
+        >
+          {/* Inner Scanline Texture */}
+          <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,4px_100%]" />
+          
+          {/* Decorative Corner Brackets (Now All Cyan) */}
+          {/* Top Left */}
+          <div className="absolute top-0 left-[10%] w-10 h-1 bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
+          <div className="absolute top-0 left-[10%] w-1 h-10 bg-cyan-400 shadow-[0_0_10px_#22d3ee] -translate-x-full origin-top-right rotate-[45deg]" />
+
+          {/* Top Right */}
+          <div className="absolute top-0 right-[10%] w-10 h-1 bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
+          <div className="absolute top-0 right-[10%] w-1 h-10 bg-cyan-400 shadow-[0_0_10px_#22d3ee] translate-x-full origin-top-left rotate-[-45deg]" />
+          
+          {/* Bottom Left */}
+          <div className="absolute bottom-0 left-[10%] w-10 h-1 bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
+          <div className="absolute bottom-0 left-[10%] w-1 h-10 bg-cyan-400 shadow-[0_0_10px_#22d3ee] -translate-x-full origin-bottom-right rotate-[-45deg]" />
+
+          {/* Bottom Right */}
+          <div className="absolute bottom-0 right-[10%] w-10 h-1 bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
+          <div className="absolute bottom-0 right-[10%] w-1 h-10 bg-cyan-400 shadow-[0_0_10px_#22d3ee] translate-x-full origin-bottom-left rotate-[45deg]" />
+
+          {/* Side Notches - Lengthened for the vertical profile */}
+          <div className="absolute top-1/2 -left-1 w-1 h-40 bg-cyan-500 -translate-y-1/2 shadow-[0_0_15px_#06b6d4]" />
+          <div className="absolute top-1/2 -right-1 w-1 h-40 bg-cyan-500 -translate-y-1/2 shadow-[0_0_15px_#06b6d4]" />
+
+          {/* Internal Glass Reflection */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+        </div>
+
+        {/* Small Technical Details (The "Screws") */}
+        <div className="absolute top-6 left-[12%] w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
+        <div className="absolute top-6 right-[12%] w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
+        <div className="absolute bottom-6 left-[12%] w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
+        <div className="absolute bottom-6 right-[12%] w-1.5 h-1.5 rounded-full bg-white/20 border border-white/10" />
+      </div>
+    </div>
+  );
+};
+
+export default function App() {
+  return <CyberWindow />;
+}
